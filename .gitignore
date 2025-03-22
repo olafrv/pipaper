@@ -1,4 +1,4 @@
-./tmp/*.*
+tmp/*
 venv
 .venv
 .env
