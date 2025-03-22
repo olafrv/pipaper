@@ -1,10 +1,14 @@
 #!/usr/bin/python
 
+import os
 import sys
 import signal
 import logging
-import time
-from waveshare.lib.waveshare_epd import epd2in13_V4
+from time import sleep
+from dotenv import load_dotenv   # type: ignore
+from lib.waveshare.lib.waveshare_epd import epd2in13_V4
+from lib.weatherapi import get_weather_emoji
+from display_ws2in13_V4 import get_image
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -33,11 +37,17 @@ signal.signal(signal.SIGINT, handle_signal)  # Ctrl+C
 signal.signal(signal.SIGTERM, handle_signal)  # Termination
 
 
-def get_image():
-    return None
+def main():
+    load_dotenv()
+    width = int(os.getenv("EPAPER_WIDTH"))
+    height = int(os.getenv("EPAPER_HEIGHT"))
 
+    weather_emoji = get_weather_emoji(
+        os.getenv("WEATHER_API_KEY"),
+        os.getenv("WEATHER_API_LAT"),
+        os.getenv("WEATHER_API_LON")
+    )
 
-def __main__():
     try:
         epd = epd2in13_V4.EPD()
         epd.init()
@@ -46,20 +56,26 @@ def __main__():
         fast_count = 0
         while True:
 
+            image = get_image(width, height, weather_emoji)
+
             if fast_count == 60:
                 # Full refresh
                 fast_count = 0
                 epd.init()
                 epd.clear()
-                epd.display(epd.getbuffer(get_image()))
+                epd.display(epd.getbuffer(image))
             else:
                 # Fast refresh
                 fast_count += 1
                 epd.init_fast()
-                epd.display_fast(epd.getbuffer(get_image()))
+                epd.display_fast(epd.getbuffer(image))
 
             epd.sleep()
-            time.sleep(60)  # 1 minute
+            sleep(60)  # 1 minute
 
     except IOError as e:
         logging.info(e)
+
+
+if __name__ == "__main__":
+    main()
