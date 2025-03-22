@@ -8,7 +8,6 @@ Pipaper is a custom made Raspberry Pi based e-paper display that shows the curre
 
 The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
 
-
 ## Hardware
 
 * Raspberry Pi Zero 2 WH + 64GB microSD card
@@ -17,6 +16,18 @@ The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
 * Python 3.10.12 Virtual Environment
   
 ## Software
+
+## Installation
+
+Create .env file with the following content:
+
+```bash
+WEATHER_API_KEY="weather_api_key"
+WEATHER_API_LAT="47.7796"
+WEATHER_API_LON="10.6183"
+EPAPER_WIDTH=250
+EPAPER_HEIGHT=122
+```
 
 ### WeatherAPI
 
