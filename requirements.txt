@@ -1,0 +1,6 @@
+pip
+pillow
+numpy
+spidev
+gpiozero
+dotenv
