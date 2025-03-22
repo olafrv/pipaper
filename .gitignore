@@ -1,7 +1,6 @@
-./tmp/*
+./tmp/*.*
 venv
 .venv
 .env
 __pycache__
 *.pyc
-*.png
