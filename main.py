@@ -63,9 +63,9 @@ def main():
             try:
                 logging.info("Checking the weather...")
                 weather_emoji = get_weather_emoji(
-                    os.getenv("WEATHER_API_KEY"),
                     os.getenv("WEATHER_API_LAT"),
                     os.getenv("WEATHER_API_LON"),
+                    os.getenv("WEATHER_API_KEY"),
                 )
             except Exception as e:
                 logging.error(e, exc_info=True)
