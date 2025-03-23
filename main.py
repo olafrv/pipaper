@@ -10,7 +10,6 @@ from lib.waveshare.lib.waveshare_epd import epd2in13_V4
 from lib.image_generator.image_generator import get_image, get_image_blank
 from lib.weatherapi import get_weather_emoji
 
-logging.basicConfig(level=logging.INFO)
 
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
@@ -18,9 +17,6 @@ SECOND = 1            # 1 second
 MINUTE = 60 * SECOND  # 60 seconds
 HOUR = 60 * MINUTE    # 60 minutes
 DAY = 24 * HOUR       # 24 hours
-
-
-epd = epd2in13_V4.EPD()
 
 
 def safe_exit(code):
@@ -38,11 +34,7 @@ def handle_signal(signum, frame):
     safe_exit(EXIT_SUCCESS)
 
 
-signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
-signal.signal(signal.SIGTERM, handle_signal)  # Termination
-
-
-def main():
+def main(epd):
 
     load_dotenv()
     width = int(os.getenv("EPAPER_WIDTH"))
@@ -94,4 +86,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(level=logging.INFO)
+    epd = epd2in13_V4.EPD()
+    signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
+    signal.signal(signal.SIGTERM, handle_signal)  # Termination
+    main(epd)
