@@ -60,8 +60,10 @@ python3 main.py
 ### Run the application on boot
 
 ```bash
-bash service.sh
+bash service.sh  # Install the service on boot
 journalctl -u pipaper  # Check the service logs
+# sudo systemctl stop pipaper
+# sudo systemctl start pipaper
 ```
 
 ### WeatherAPI
