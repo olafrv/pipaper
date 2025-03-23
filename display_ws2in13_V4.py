@@ -10,6 +10,10 @@ from PIL import Image, ImageDraw, ImageFont
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
+def get_image_blank(width: int = 250, height: int = 122) -> Image:
+    return Image.new("1", (width, height), 255)  # bg 1-bit color (monochrome)
+
+
 def get_image(width: int = 250,
               height: int = 122,
               weather_emoji: str = "☀️") -> Image:

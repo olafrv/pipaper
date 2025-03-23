@@ -8,7 +8,7 @@ from time import sleep
 from dotenv import load_dotenv   # type: ignore
 from lib.waveshare.lib.waveshare_epd import epd2in13_V4
 from lib.weatherapi import get_weather_emoji
-from display_ws2in13_V4 import get_image
+from display_ws2in13_V4 import get_image, get_image_blank
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -24,11 +24,19 @@ logging.basicConfig(level=logging.DEBUG)
 # Power Off
 # Border Color <= VCOM AND DATA INTERVAL SETTING
 
+MINUTE = 60  # 60 seconds
+HOUR = 60 * MINUTE  # 60 minutes
+DAY = 24 * HOUR  # 24 hours
+
 epd = None
 
 
 def handle_signal(signum, frame):
     logging.info(f"Received signal {signum}, cleaning up...")
+    image = get_image_blank()
+    epd.init_fast()
+    epd.display_fast(epd.getbuffer(image))
+    epd.sleep()
     epd2in13_V4.epdconfig.module_exit(cleanup=True)
     sys.exit(0)
 
@@ -53,25 +61,25 @@ def main():
         epd.init()
         epd.Clear(0xFF)
 
-        fast_count = 0
+        seconds_since_last_refresh = 0
         while True:
 
             image = get_image(width, height, weather_emoji)
 
-            if fast_count == 60:
-                # Full refresh
-                fast_count = 0
+            if seconds_since_last_refresh >= HOUR:
+                seconds_since_last_refresh = 0
                 epd.init()
                 epd.Clear(0xFF)
                 epd.display(epd.getbuffer(image))
+
             else:
-                # Fast refresh
-                fast_count += 1
+                seconds_since_last_refresh += MINUTE
                 epd.init_fast()
                 epd.display_fast(epd.getbuffer(image))
 
             epd.sleep()
-            sleep(60)  # 1 minute
+            logging.info(f"Sleeping for {MINUTE} seconds...")
+            sleep(MINUTE)
 
     except IOError as e:
         logging.info(e)
