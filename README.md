@@ -57,6 +57,12 @@ EPAPER_HEIGHT=122
 python3 main.py
 ```
 
+### Run the application on boot
+
+```bash
+bash service.sh
+```
+
 ### WeatherAPI
 
 * https://www.weatherapi.com/docs/
