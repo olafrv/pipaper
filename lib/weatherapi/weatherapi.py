@@ -15,20 +15,25 @@ def get_day_or_night():
 
 
 def get_weather_condition_code(API_KEY, LAT, LON):
-    url = f" http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={LAT},{LON}"
+    querystring = f"key={API_KEY}&q={LAT},{LON}"
+    url = f"http://api.weatherapi.com/v1/current.json?{querystring}"
+
     response = requests.get(url)
     data = response.json()
-    weather_condition_code = \
-        data['current']['condition']['code']
+    weather_condition_code = data['current']['condition']['code']
+
     return weather_condition_code
 
 
 def get_weather_emoji(API_KEY, LAT, LON):
     weather_condition_code = get_weather_condition_code(API_KEY, LAT, LON)
-    conditions_file = os.path.join(os.path.dirname(__file__), 'conditions.json')
+    conditions_file = os.path.join(os.path.dirname(__file__),
+                                   'conditions.json')
     with open(conditions_file) as json_file:
         WEATHER_CONDITIONS = json.load(json_file)
+
     for condition in WEATHER_CONDITIONS:
         if condition["code"] == weather_condition_code:
             return condition["emoji_" + get_day_or_night()]
+
     return "❓"  # Default emoji if code is not found
