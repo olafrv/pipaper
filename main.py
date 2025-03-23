@@ -28,7 +28,7 @@ MINUTE = 60  # 60 seconds
 HOUR = 60 * MINUTE  # 60 minutes
 DAY = 24 * HOUR  # 24 hours
 
-epd = None
+epd = epd2in13_V4.EPD()
 
 
 def handle_signal(signum, frame):
@@ -57,7 +57,6 @@ def main():
     )
 
     try:
-        epd = epd2in13_V4.EPD()
         epd.init()
         epd.Clear(0xFF)
 
@@ -69,7 +68,6 @@ def main():
             if seconds_since_last_refresh >= HOUR:
                 seconds_since_last_refresh = 0
                 epd.init()
-                epd.Clear(0xFF)
                 epd.display(epd.getbuffer(image))
 
             else:
