@@ -54,7 +54,8 @@ def get_random_emoji() -> str:
     with open(conditions_file) as json_file:
         WEATHER_CONDITIONS = json.load(json_file)
 
-    random_index = random.randint(0, len(WEATHER_CONDITIONS) - 1) 
+    random_index = random.randint(0, len(WEATHER_CONDITIONS) - 1)
+
     return WEATHER_CONDITIONS[random_index]["emoji_" + get_day_or_night()]
 
 
