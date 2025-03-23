@@ -16,6 +16,7 @@ def get_image_blank(width: int = 250, height: int = 122) -> Image:
 
 def get_image(width: int = 250,
               height: int = 122,
+              rotation: int = 0,
               weather_emoji: str = "⛓️‍💥") -> Image:
 
     image = Image.new("1", (width, height), 255)  # bg 1-bit color (monochrome)
@@ -50,6 +51,8 @@ def get_image(width: int = 250,
     draw.text((15, 30), weather_emoji, font=emoji_font, fill=0)
     draw.text((85, 30), current_time, font=time_font, fill=0)
     draw.text((55, 90), current_date, font=date_font, fill=0)
+    if rotation != 0:
+        image = image.rotate(rotation, expand=True)
 
     return image
 

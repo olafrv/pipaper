@@ -71,7 +71,7 @@ def main():
                 logging.error(e, exc_info=True)
 
             logging.info("Generating image...")
-            image = get_image(width, height, weather_emoji)
+            image = get_image(width, height, 180, weather_emoji)
 
             if seconds_since_last_refresh >= HOUR:
                 logging.info("Full refresh...")
