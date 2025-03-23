@@ -19,26 +19,24 @@ HOUR = 60 * MINUTE    # 60 minutes
 DAY = 24 * HOUR       # 24 hours
 
 
-def safe_exit(code):
-    logging.info("Exiting safely...")
-    blank_image = get_image_blank()
-    epd.init_fast()                               # type: ignore # noqa: F821
-    epd.display_fast(epd.getbuffer(blank_image))  # type: ignore # noqa: F821
-    epd.sleep()                                   # type: ignore # noqa: F821
-    epd2in13_V4.epdconfig.module_exit(cleanup=True)
-    sys.exit(code)
-
-
-def handle_signal(signum, frame):
-    logging.info(f"Received signal {signum} ...")
-    safe_exit(EXIT_SUCCESS)
-
-
 def main():
 
     logging.basicConfig(level=logging.WARN)
 
     epd = epd2in13_V4.EPD()
+
+    def safe_exit(code):
+        logging.info("Exiting safely...")
+        blank_image = get_image_blank()
+        epd.init_fast()
+        epd.display_fast(epd.getbuffer(blank_image))
+        epd.sleep()
+        epd2in13_V4.epdconfig.module_exit(cleanup=True)
+        sys.exit(code)
+
+    def handle_signal(signum, frame):
+        logging.info(f"Received signal {signum} ...")
+        safe_exit(EXIT_SUCCESS)
 
     signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
     signal.signal(signal.SIGTERM, handle_signal)  # Termination
