@@ -22,9 +22,9 @@ DAY = 24 * HOUR       # 24 hours
 def safe_exit(code):
     logging.info("Exiting safely...")
     blank_image = get_image_blank()
-    epd.init_fast()
-    epd.display_fast(epd.getbuffer(blank_image))
-    epd.sleep()
+    epd.init_fast()                               # type: ignore # noqa: F821
+    epd.display_fast(epd.getbuffer(blank_image))  # type: ignore # noqa: F821
+    epd.sleep()                                   # type: ignore # noqa: F821
     epd2in13_V4.epdconfig.module_exit(cleanup=True)
     sys.exit(code)
 
@@ -34,9 +34,17 @@ def handle_signal(signum, frame):
     safe_exit(EXIT_SUCCESS)
 
 
-def main(epd):
+def main():
+
+    logging.basicConfig(level=logging.WARN)
+
+    epd = epd2in13_V4.EPD()
+
+    signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
+    signal.signal(signal.SIGTERM, handle_signal)  # Termination
 
     load_dotenv()
+
     width = int(os.getenv("EPAPER_WIDTH"))
     height = int(os.getenv("EPAPER_HEIGHT"))
 
@@ -86,8 +94,4 @@ def main(epd):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.WARN)
-    epd = epd2in13_V4.EPD()
-    signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
-    signal.signal(signal.SIGTERM, handle_signal)  # Termination
-    main(epd)
+    main()
