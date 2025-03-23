@@ -51,9 +51,12 @@ def get_image(width: int = 250,
     # Margins due to case and screen border differences
     x_margin = 10
     y_margin = 10
-    draw.text((x_margin + 15, y_margin + 10), weather_emoji, font=emoji_font, fill=0)
-    draw.text((x_margin + 85, y_margin + 10), current_time, font=time_font, fill=0)
-    draw.text((x_margin + 55, y_margin + 70), current_date, font=date_font, fill=0)
+    draw.text((x_margin + 15, y_margin + 10),
+              weather_emoji, font=emoji_font, fill=0)
+    draw.text((x_margin + 85, y_margin + 10),
+              current_time, font=time_font, fill=0)
+    draw.text((x_margin + 55, y_margin + 70),
+              current_date, font=date_font, fill=0)
     if rotation != 0:
         image = image.rotate(rotation, expand=True)
 

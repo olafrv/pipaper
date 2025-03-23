@@ -61,6 +61,7 @@ python3 main.py
 
 ```bash
 bash service.sh
+journalctl -u pipaper  # Check the service logs
 ```
 
 ### WeatherAPI
