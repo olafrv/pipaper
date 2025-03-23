@@ -16,7 +16,7 @@ def get_image_blank(width: int = 250, height: int = 122) -> Image:
 
 def get_image(width: int = 250,
               height: int = 122,
-              weather_emoji: str = "☀️") -> Image:
+              weather_emoji: str = "⛓️‍💥") -> Image:
 
     image = Image.new("1", (width, height), 255)  # bg 1-bit color (monochrome)
     draw = ImageDraw.Draw(image)
