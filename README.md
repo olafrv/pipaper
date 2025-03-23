@@ -12,7 +12,7 @@ current time and weather condition (icon). The weather data is fetched from [Wea
 * Raspberry Pi Zero 2 WH + 64GB microSD card
 * Raspbian OS (Bookworm) 64-bits with SPI enabled
 * Waveshare 2.13inch e-Paper HAT (V4) 255x122 pixels
-* Python 3.10.12 Virtual Environment
+* Python 3.10.12
   
 ## Software
 
