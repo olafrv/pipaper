@@ -4,9 +4,8 @@
 
 ![Pipaper](./fonts/screen.png)
 
-Pipaper is a custom made Raspberry Pi based e-paper display that shows the current time and weather condition (icon). 
-
-The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
+Pipaper is a custom made Raspberry Pi based e-paper display that shows the 
+current time and weather condition (icon). The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
 
 ## Hardware
 
@@ -55,7 +54,7 @@ EPAPER_HEIGHT=122
 ### Run the application
 
 ```bash
-python pipaper.py
+python3 main.py
 ```
 
 ### WeatherAPI
