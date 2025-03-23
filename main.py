@@ -7,8 +7,8 @@ import logging
 from time import sleep
 from dotenv import load_dotenv   # type: ignore
 from lib.waveshare.lib.waveshare_epd import epd2in13_V4
+from lib.image_generator.image_generator import get_image, get_image_blank
 from lib.weatherapi import get_weather_emoji
-from display_ws2in13_V4 import get_image, get_image_blank
 
 logging.basicConfig(level=logging.INFO)
 

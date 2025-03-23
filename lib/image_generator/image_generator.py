@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# WaveShare 2.13inch e-Paper HAT (V4) display image generator
-# https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT_(B)
-
 import os
 import datetime
 from PIL import Image, ImageDraw, ImageFont
@@ -64,8 +61,8 @@ def get_image(width: int = 250,
 
 
 if __name__ == "__main__":
-    image_file = os.path.join(BASE_DIR, "tmp/weather_display.png")
-    print("Drawing...")
+    # Rnning this script will generate an image file for testing
+    image_file = os.path.join(BASE_DIR, "../../tmp/weather_display.png")
+    print(f"Drawing to: {image_file}")
     image = get_image()
-    print("Saving... ", image_file)
     image.save(image_file)
