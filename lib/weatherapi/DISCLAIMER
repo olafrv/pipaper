@@ -1,0 +1,8 @@
+DISCLAIMER
+
+The original "conditions.json" is available at:
+https://www.weatherapi.com/docs/weather_conditions.json
+
+The modified "conditions.json" includes two more fields
+"emoji_day" and "emoji_night" used by "weatherapi.py"
+for easier emoji representation of weather conditions.

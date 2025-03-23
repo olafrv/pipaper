@@ -5,7 +5,8 @@
 ![Pipaper](./fonts/screen+lego.jpg)
 
 Pipaper is a custom made Raspberry Pi based e-paper display that shows the 
-current time and weather condition (icon). The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
+current time and weather condition (icon). The weather data is fetched 
+from [WeatherAPI](https://www.weatherapi.com/).
 
 ## Hardware
 
@@ -66,13 +67,21 @@ journalctl -u pipaper  # Check the service logs
 # sudo systemctl start pipaper
 ```
 
-### WeatherAPI
+### Raspberry Pi Zero 2 WH
 
-* https://www.weatherapi.com/docs/
-* https://www.weatherapi.com/docs/weather_conditions.json
+* https://www.raspberrypi.com/documentation/
 
 ### Waveshare e-Paper Display
 
 * https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT_Manual (Version 4)
 * https://github.com/waveshareteam/e-Paper/tree/master/RaspberryPi_JetsonNano/python/lib/waveshare_epd
 * https://github.com/waveshareteam/e-Paper/blob/master/RaspberryPi_JetsonNano/python/examples/epd_2in13b_V4_test.py
+
+### WeatherAPI
+
+* https://www.weatherapi.com/docs/
+* https://www.weatherapi.com/docs/weather_conditions.json
+
+### Noto Color Emoji
+
+* https://fonts.google.com/noto/specimen/Noto+Color+Emoji

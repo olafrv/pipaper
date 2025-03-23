@@ -1,0 +1,13 @@
+DISCLAIMER
+
+This directory contains files from Waveshare Electronics.
+They are provided here for convenience and to ensure that 
+the software works with the hardware. The files are not 
+modified and are provided as is.
+
+This directory/files are a copy of files from 
+URL: https://github.com/waveshareteam/e-Paper/tree/master
+Commit: 179570ba2b6ea1a8542acdb072ddbcb3893fdf87 (March 2025)
+
+They are required to operate the Waveshare e-Paper Display:
+https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT (V4)
