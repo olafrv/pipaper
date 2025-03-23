@@ -86,7 +86,7 @@ def main(epd):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.WARN)
     epd = epd2in13_V4.EPD()
     signal.signal(signal.SIGINT, handle_signal)   # Ctrl + C
     signal.signal(signal.SIGTERM, handle_signal)  # Termination
