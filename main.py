@@ -51,7 +51,7 @@ def main():
     try:
         epd = epd2in13_V4.EPD()
         epd.init()
-        epd.clear()
+        epd.Clear(0xFF)
 
         fast_count = 0
         while True:
@@ -62,7 +62,7 @@ def main():
                 # Full refresh
                 fast_count = 0
                 epd.init()
-                epd.clear()
+                epd.Clear(0xFF)
                 epd.display(epd.getbuffer(image))
             else:
                 # Fast refresh
