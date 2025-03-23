@@ -2,7 +2,7 @@
 
 ## What is Pipaper?
 
-![Pipaper](./fonts/screen.png)
+![Pipaper](./fonts/screen+lego.jpg)
 
 Pipaper is a custom made Raspberry Pi based e-paper display that shows the 
 current time and weather condition (icon). The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
