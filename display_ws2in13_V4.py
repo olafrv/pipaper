@@ -43,11 +43,12 @@ def get_image(width: int = 250,
         emoji_font = ImageFont.load_default()
 
     # Draw the text elements on the background
-    draw.text((15, 30), weather_emoji, font=emoji_font, fill=0) 
+    draw.text((15, 30), weather_emoji, font=emoji_font, fill=0)
     draw.text((85, 30), current_time, font=time_font, fill=0)
     draw.text((55, 90), current_date, font=date_font, fill=0)
 
     return image
+
 
 if __name__ == "__main__":
     image_file = os.path.join(BASE_DIR, "tmp/weather_display.png")
