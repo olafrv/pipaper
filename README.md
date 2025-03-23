@@ -19,6 +19,29 @@ The weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
 
 ## Installation
 
+### Clone the repository
+
+```bash
+git clone github.com/olafrv/pipaper.git
+cd pipaper
+```
+
+### Install dependencies
+
+Without a virtual environment:
+```bash	
+sudo apt install --yes $(cat requirements.txt | sed 's/^/python3-/g')
+```
+
+With a virtual environment:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Configuration
+
 Create `.env` file with the following content:
 
 ```bash
@@ -27,6 +50,12 @@ WEATHER_API_LAT="47.7796"
 WEATHER_API_LON="10.6183"
 EPAPER_WIDTH=250
 EPAPER_HEIGHT=122
+```
+
+### Run the application
+
+```bash
+python pipaper.py
 ```
 
 ### WeatherAPI
