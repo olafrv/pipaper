@@ -4,7 +4,7 @@ import os
 import sys
 import signal
 import logging
-from time import sleep
+from time import sleep, localtime
 from dotenv import load_dotenv   # type: ignore
 from lib.waveshare.lib.waveshare_epd import epd2in13_V4
 from lib.image_generator.image_generator import get_image, get_image_blank
@@ -17,6 +17,12 @@ SECOND = 1            # 1 second
 MINUTE = 60 * SECOND  # 60 seconds
 HOUR = 60 * MINUTE    # 60 minutes
 DAY = 24 * HOUR       # 24 hours
+
+
+def sleep_until_next_minute():
+    current_seconds = localtime().tm_sec
+    seconds_to_next_minute = MINUTE - current_seconds
+    sleep(seconds_to_next_minute)
 
 
 def main():
@@ -84,7 +90,7 @@ def main():
 
             logging.info(f"Sleeping {MINUTE}s...")
             epd.sleep()  # avoid high voltage (risk of damage)!
-            sleep(MINUTE)
+            sleep_until_next_minute()  # refresh only minute changes
 
     except Exception as e:
         logging.error(e, exc_info=True)
